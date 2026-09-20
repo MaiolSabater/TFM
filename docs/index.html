@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene Stylization Study</title>
+<meta name="description" content="A quick visual preference study comparing two 3D scene stylization methods.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== INTRO SCREEN ===== -->
+  <section id="screen-intro" class="screen">
+    <div class="intro-card">
+      <p class="eyebrow">Visual preference study &middot; ~8&ndash;10 minutes</p>
+      <h1>Which stylized scene looks better to you?</h1>
+      <p class="lede">
+        You'll see a series of 3D scenes that have been repainted in the look of a
+        reference artwork. For each one, two different rendering methods produced a
+        result &mdash; one shown on the left, one on the right, in random order each time.
+        Look at both and say which you prefer.
+      </p>
+      <div class="intro-example" aria-hidden="true">
+        <div class="intro-example-refs">
+          <figure><img src="images/content_tandt_family.jpg" alt=""><figcaption>Original scene</figcaption></figure>
+          <figure><img src="images/style_14.jpg" alt=""><figcaption>Style reference</figcaption></figure>
+        </div>
+        <div class="intro-example-arrow">&rarr;</div>
+        <div class="intro-example-results">
+          <figure><img src="images/ours_t013.jpg" alt=""><figcaption>Result A</figcaption></figure>
+          <figure><img src="images/base_t013.jpg" alt=""><figcaption>Result B</figcaption></figure>
+        </div>
+      </div>
+      <ul class="intro-notes">
+        <li>There are no right answers &mdash; go with your own visual preference.</li>
+        <li>The study is anonymous. No personal data is collected, only your choices.</li>
+        <li>You can close the tab at any point; whatever you've answered so far is still recorded.</li>
+      </ul>
+      <button class="btn btn-primary btn-large" id="btn-start">Start the study</button>
+    </div>
+  </section>
+
+  <!-- ===== TRIAL SCREEN ===== -->
+  <section id="screen-trial" class="screen" hidden>
+    <header class="trial-header">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <p class="progress-label"><span id="trial-index">1</span> / <span id="trial-total">26</span></p>
+    </header>
+
+    <div class="refs-row" id="refs-row">
+      <figure class="ref-card">
+        <img id="img-content" src="" alt="Original scene">
+        <figcaption>Original scene</figcaption>
+      </figure>
+      <figure class="ref-card">
+        <img id="img-style" src="" alt="Style reference">
+        <figcaption>Style</figcaption>
+      </figure>
+      <figure class="ref-card" id="ref-color-card" hidden>
+        <img id="img-color" src="" alt="Color reference">
+        <figcaption>Color</figcaption>
+      </figure>
+    </div>
+
+    <div class="results-row">
+      <button class="result-card" id="card-left" data-side="left" aria-label="Prefer left result">
+        <span class="result-tag">A</span>
+        <img id="img-left" src="" alt="Result A">
+      </button>
+      <button class="result-card" id="card-right" data-side="right" aria-label="Prefer right result">
+        <span class="result-tag">B</span>
+        <img id="img-right" src="" alt="Result B">
+      </button>
+    </div>
+
+    <div class="choice-row">
+      <button class="btn btn-choice" id="btn-pick-left" data-choice="left">&larr; A looks better</button>
+      <button class="btn btn-choice btn-choice-tie" id="btn-pick-tie" data-choice="tie">About the same</button>
+      <button class="btn btn-choice" id="btn-pick-right" data-choice="right">B looks better &rarr;</button>
+    </div>
+  </section>
+
+  <!-- ===== DONE SCREEN ===== -->
+  <section id="screen-done" class="screen" hidden>
+    <div class="intro-card">
+      <p class="eyebrow">All done</p>
+      <h1>Thank you!</h1>
+      <p class="lede">
+        Your <span id="done-count">26</span> answers have been recorded. If you'd like a
+        personal backup of what you submitted, you can download it below &mdash; totally
+        optional.
+      </p>
+      <button class="btn btn-secondary" id="btn-download">Download my answers (.json)</button>
+      <p class="fineprint">You may close this tab now.</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
