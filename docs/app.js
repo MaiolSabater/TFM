@@ -23,6 +23,14 @@ const ENTRY = {
 
 const IMG_DIR = "images/";
 
+// Bump this on every push that changes manifest.json or images/, so a
+// visitor's browser (and GitHub Pages' CDN) can't silently keep serving a
+// stale manifest that points at filenames which no longer exist.
+const SITE_VERSION = "2";
+function withVersion(path) {
+  return path + (path.includes("?") ? "&" : "?") + "v=" + SITE_VERSION;
+}
+
 function getParticipantId() {
   try {
     let id = localStorage.getItem("study_participant_id");
@@ -107,7 +115,7 @@ async function main() {
 
   let manifest = [];
   try {
-    const res = await fetch("manifest.json");
+    const res = await fetch(withVersion("manifest.json"), { cache: "no-store" });
     manifest = await res.json();
   } catch (e) {
     document.body.innerHTML = "<p style='padding:40px;font-family:sans-serif'>Could not load the study data (manifest.json). If you're opening this file directly, serve it over http:// instead of file://.</p>";
@@ -124,16 +132,16 @@ async function main() {
     trialIndexEl.textContent = String(current + 1);
     progressFill.style.width = ((current) / trials.length * 100) + "%";
 
-    imgContent.src = IMG_DIR + t.content;
-    imgStyle.src = IMG_DIR + t.style;
+    imgContent.src = withVersion(IMG_DIR + t.content);
+    imgStyle.src = withVersion(IMG_DIR + t.style);
     if (t.color) {
-      imgColor.src = IMG_DIR + t.color;
+      imgColor.src = withVersion(IMG_DIR + t.color);
       refColorCard.hidden = false;
     } else {
       refColorCard.hidden = true;
     }
-    imgLeft.src = IMG_DIR + t.left;
-    imgRight.src = IMG_DIR + t.right;
+    imgLeft.src = withVersion(IMG_DIR + t.left);
+    imgRight.src = withVersion(IMG_DIR + t.right);
 
     setChoiceEnabled(true);
   }
