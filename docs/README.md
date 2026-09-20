@@ -1,7 +1,7 @@
 # Scene stylization user study
 
 A static site (`index.html` + `app.js` + `style.css` + `manifest.json` + `images/`)
-that runs a 2AFC preference study: 26 trials, each showing the original scene,
+that runs a 2AFC preference study: 30 trials, each showing the original scene,
 the style (and color, for second-run trials) reference, and two stylization
 results side by side in randomized left/right order. Visitors pick left,
 right, or "about the same".
@@ -61,9 +61,9 @@ Any static host works. Simplest with the existing GitHub repo:
 
 ## Notes on the data
 
-- 26 trials sampled across 6 scenes (`flower`, `horns`, `garden`, `family`,
+- 30 trials sampled across 6 scenes (`flower`, `horns`, `garden`, `family`,
   `m60`, `truck`) from `Ours/StylizedGS` vs. the baseline `StylizedGS`
-  outputs, 18 single-style trials + 8 style+color trials.
+  outputs, 22 single-style trials + 8 style+color trials.
 - Left/right placement of "ours" vs. baseline is randomized per trial
   (baked into `manifest.json`'s `left_is_ours`), and trial order is
   reshuffled per visitor in `app.js`.
