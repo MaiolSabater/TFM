@@ -6,19 +6,19 @@
  * needs no other changes. Until FORM_ACTION is set, answers are still
  * collected and downloadable, just not sent anywhere.
  */
-const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfSJAo7jmyoko4UVvAcWNJfQLy1YgLfiCvwEfHD3Y0lq8etTQ/viewform?usp=header"; // e.g. "https://docs.google.com/forms/d/e/XXXXXXXXXXXX/formResponse"
+const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfSJAo7jmyoko4UVvAcWNJfQLy1YgLfiCvwEfHD3Y0lq8etTQ/formResponse";
 const ENTRY = {
-  participant_id: "",
-  trial_id: "",
-  dataset: "",
-  scene: "",
-  kind: "",
-  style: "",
-  color: "",
-  choice: "",
-  preferred: "",
-  left_is_ours: "",
-  trial_order: "",
+  participant_id: "entry.1441168395",
+  trial_id: "entry.2026560637",
+  dataset: "entry.1387060064",
+  scene: "entry.1563710009",
+  kind: "entry.1598734123",
+  style: "entry.773870065",
+  color: "entry.382881730",
+  choice: "entry.578103266",
+  preferred: "entry.1969638757",
+  left_is_ours: "entry.2094191848",
+  trial_order: "entry.1399333869",
 };
 
 const IMG_DIR = "images/";
