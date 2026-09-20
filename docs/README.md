@@ -59,6 +59,19 @@ Any static host works. Simplest with the existing GitHub repo:
   browser and downloadable at the end, but nothing is sent anywhere — don't
   circulate the link until that's filled in.
 
+## After any future edit to app.js, style.css, manifest.json or images/
+
+GitHub Pages caches these for 10 minutes, and browsers can hold on to them
+longer than that. Bump the version so returning visitors can't get served a
+stale mix of old/new files:
+
+1. Bump `SITE_VERSION` in `app.js`.
+2. Update the matching `?v=` on the `style.css` and `app.js` `<script>`/
+   `<link>` tags in `index.html` to the same number.
+
+Then test in a private/incognito window (not just a reload) before
+circulating.
+
 ## Notes on the data
 
 - 30 trials sampled across 6 scenes (`flower`, `horns`, `garden`, `family`,

@@ -9,7 +9,6 @@
   --accent: #1f5f5b;
   --accent-ink: #ffffff;
   --accent-soft: #e2ece9;
-  --tie: #8a8677;
   --shadow: 0 1px 2px rgba(28,29,26,0.06), 0 8px 24px -12px rgba(28,29,26,0.18);
   --radius: 14px;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -27,7 +26,6 @@
     --accent: #57bdb4;
     --accent-ink: #0d1615;
     --accent-soft: #1d302d;
-    --tie: #8a8b83;
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
   }
 }
@@ -303,10 +301,6 @@ button { font-family: inherit; }
   background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--accent);
-}
-
-.btn-choice-tie {
-  color: var(--tie);
 }
 
 @media (max-width: 640px) {

@@ -26,7 +26,7 @@ const IMG_DIR = "images/";
 // Bump this on every push that changes manifest.json or images/, so a
 // visitor's browser (and GitHub Pages' CDN) can't silently keep serving a
 // stale manifest that points at filenames which no longer exist.
-const SITE_VERSION = "2";
+const SITE_VERSION = "3";
 function withVersion(path) {
   return path + (path.includes("?") ? "&" : "?") + "v=" + SITE_VERSION;
 }
@@ -110,7 +110,6 @@ async function main() {
   const cardLeft = document.getElementById("card-left");
   const cardRight = document.getElementById("card-right");
   const btnPickLeft = document.getElementById("btn-pick-left");
-  const btnPickTie = document.getElementById("btn-pick-tie");
   const btnPickRight = document.getElementById("btn-pick-right");
 
   let manifest = [];
@@ -147,7 +146,7 @@ async function main() {
   }
 
   function setChoiceEnabled(enabled) {
-    [cardLeft, cardRight, btnPickLeft, btnPickTie, btnPickRight].forEach((el) => {
+    [cardLeft, cardRight, btnPickLeft, btnPickRight].forEach((el) => {
       el.disabled = !enabled;
       el.style.opacity = enabled ? "1" : "0.5";
       el.style.pointerEvents = enabled ? "auto" : "none";
@@ -156,12 +155,8 @@ async function main() {
 
   function recordChoice(choice) {
     const t = trials[current];
-    let preferred;
-    if (choice === "tie") preferred = "tie";
-    else {
-      const pickedIsOurs = (choice === "left") === t.left_is_ours;
-      preferred = pickedIsOurs ? "ours" : "baseline";
-    }
+    const pickedIsOurs = (choice === "left") === t.left_is_ours;
+    const preferred = pickedIsOurs ? "ours" : "baseline";
 
     const row = {
       participant_id: participantId,
@@ -198,7 +193,6 @@ async function main() {
   cardLeft.addEventListener("click", () => recordChoice("left"));
   cardRight.addEventListener("click", () => recordChoice("right"));
   btnPickLeft.addEventListener("click", () => recordChoice("left"));
-  btnPickTie.addEventListener("click", () => recordChoice("tie"));
   btnPickRight.addEventListener("click", () => recordChoice("right"));
 
   btnStart.addEventListener("click", () => {
